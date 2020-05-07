@@ -33,12 +33,9 @@ public class BookHotelTest {
                 bookingDetails = bookingHotelHelper.assignToPojo(firstName, lastName, additionalNeeds, depositPaid, totalPrice, checkInDate, checkOutDate);
                 if(method.equalsIgnoreCase(Constants.POST)) {
                         response = bookingHotelHelper.restMethod(method, Constants.APIURL, bookingDetails, userName, password);
-                        id = bookingHotelHelper.assignResponseToBookingDetailsbyIDPojo(response).getBookingid();
-                        bookingDetailsResp = bookingHotelHelper.assignResponseToBookingDetailsbyIDPojo(response).getBooking();
                 } else {
-                        make_a_POST_REQUEST();
+                        make_a_POST_REQUEST();//Before put or patch request we have to create the resources in backend.That part is done here.
                         response = bookingHotelHelper.restMethod(method, Constants.APIURL + "/" + id, bookingDetails, userName, password);
-                        bookingDetailsResp = bookingHotelHelper.assignResponseToBookingDetailsPojo(response);
                 }
                 if(response.getStatusCode() != statusCode) {
                         /**
@@ -46,6 +43,12 @@ public class BookHotelTest {
                          */
                         Assert.fail("Status Code is not equal expecting " + statusCode + " but found " + response.getStatusCode());
                 } else {
+                        if(method.equalsIgnoreCase("POST")) {
+                                id = bookingHotelHelper.assignResponseToBookingDetailsbyIDPojo(response).getBookingid();
+                                bookingDetailsResp = bookingHotelHelper.assignResponseToBookingDetailsbyIDPojo(response).getBooking();
+                        } else {
+                                bookingDetailsResp = bookingHotelHelper.assignResponseToBookingDetailsPojo(response);
+                        }
                         if(method.equalsIgnoreCase("PATCH")) {
                                 firstName = firstName != null ? firstName : staticbookingDetailsResp.getFirstname();
                                 lastName = lastName != null ? lastName : staticbookingDetailsResp.getLastname();

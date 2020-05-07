@@ -27,7 +27,7 @@
     <test name="PUT request - with valid request Parameters and invalid AUTH">
         <parameter name="userName" value="admin123"/>
         <parameter name="password" value="password123"/>
-        <parameter name="statusCode" value="200"/>
+        <parameter name="statusCode" value="401"/>
         <parameter name="firstName" value="Suman12"/>
         <parameter name="lastName" value="abc12"/>
         <parameter name="additionalNeeds" value="dinne2r"/>
