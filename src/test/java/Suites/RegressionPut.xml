@@ -1,0 +1,155 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="PUT/PATCH">
+
+
+    <test name="PUT request - with valid request Parameters ">
+        <parameter name="userName" value="admin"/>
+        <parameter name="password" value="password123"/>
+        <parameter name="statusCode" value="200"/>
+        <parameter name="firstName" value="Suman12"/>
+        <parameter name="lastName" value="abc12"/>
+        <parameter name="additionalNeeds" value="dinne2r"/>
+        <parameter name="depositPaid" value="false"/>
+        <parameter name="totalPrice" value="1030"/>
+        <parameter name="checkInDate" value="2018-01-02"/>
+        <parameter name="checkOutDate" value="2018-01-02"/>
+        <parameter name="method" value="PUT"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="PUT request - with valid request Parameters and invalid AUTH">
+        <parameter name="userName" value="admin123"/>
+        <parameter name="password" value="password123"/>
+        <parameter name="statusCode" value="200"/>
+        <parameter name="firstName" value="Suman12"/>
+        <parameter name="lastName" value="abc12"/>
+        <parameter name="additionalNeeds" value="dinne2r"/>
+        <parameter name="depositPaid" value="false"/>
+        <parameter name="totalPrice" value="1030"/>
+        <parameter name="checkInDate" value="2018-01-02"/>
+        <parameter name="checkOutDate" value="2018-01-02"/>
+        <parameter name="method" value="PUT"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="PATCH request - Update first name">
+        <parameter name="userName" value="admin"/>
+        <parameter name="password" value="password123"/>
+        <parameter name="statusCode" value="200"/>
+        <parameter name="firstName" value="Suman12345"/>
+        <parameter name="method" value="PATCH"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="PATCH request - Update Last name">
+        <parameter name="userName" value="admin"/>
+        <parameter name="password" value="password123"/>
+        <parameter name="statusCode" value="200"/>
+        <parameter name="lastName" value="abcd"/>
+        <parameter name="method" value="PATCH"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="PATCH request - Update AdditionalNeeds">
+        <parameter name="userName" value="admin"/>
+        <parameter name="password" value="password123"/>
+        <parameter name="statusCode" value="200"/>
+        <parameter name="additionalNeeds" value="Sudinneran12345"/>
+        <parameter name="method" value="PATCH"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+    <test name="PATCH request - Update only Check In">
+        <parameter name="userName" value="admin"/>
+        <parameter name="password" value="password123"/>
+        <parameter name="statusCode" value="200"/>
+        <parameter name="checkInDate" value="2018-01-04"/>
+        <parameter name="method" value="PATCH"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="PATCH request - Update only Check out">
+        <parameter name="userName" value="admin"/>
+        <parameter name="password" value="password123"/>
+        <parameter name="statusCode" value="200"/>
+        <parameter name="checkOutDate" value="2018-03-05"/>
+        <parameter name="method" value="PATCH"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="PATCH request - Update both Checkin and checkOut">
+        <parameter name="userName" value="admin"/>
+        <parameter name="password" value="password123"/>
+        <parameter name="statusCode" value="200"/>
+        <parameter name="checkInDate" value="2018-01-04"/>
+        <parameter name="checkOutDate" value="2018-01-05"/>
+        <parameter name="method" value="PATCH"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="PATCH request - Update both additionalNeeds">
+        <parameter name="userName" value="admin"/>
+        <parameter name="password" value="password123"/>
+        <parameter name="statusCode" value="200"/>
+        <parameter name="additionalNeeds" value="sAAAAAA"/>
+        <parameter name="method" value="PATCH"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,136 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="POST API and Get API ">
+<!--    "firstName","lastName","additionalNeeds","depositPaid","totalPrice","checkInDate","checkOutDate"-->
+    <parameter name="userName" value="admin"/>
+    <parameter name="password" value="password123"/>
+
+    <test name="Post request - with valid request Parameters ">
+        <parameter name="statusCode" value="200"/>
+        <parameter name="firstName" value="Sumukha@$DS"/>
+        <parameter name="lastName" value="holl!#13a332@#"/>
+        <parameter name="additionalNeeds" value="dinner"/>
+        <parameter name="depositPaid" value="true"/>
+        <parameter name="totalPrice" value="100"/>
+        <parameter name="checkInDate" value="2018-01-01"/>
+        <parameter name="checkOutDate" value="2018-01-01"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Post request - without additionalneeds param in the request Body ">
+        <parameter name="statusCode" value="200"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <parameter name="statusCode" value="400"/>
+                <parameter name="firstName" value="Sumukha@$DS"/>
+                <parameter name="lastName" value="holl!#13a332@#"/>
+                <parameter name="depositPaid" value="true"/>
+                <parameter name="totalPrice" value="100"/>
+                <parameter name="checkInDate" value="2018-01-01"/>
+                <parameter name="checkOutDate" value="2018-01-01"/>
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Post request - First name and Last name Same">
+        <parameter name="statusCode" value="400"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <parameter name="statusCode" value="400"/>
+                <parameter name="firstName" value="Suman"/>
+                <parameter name="lastName" value="Suman"/>
+                <parameter name="depositPaid" value="true"/>
+                <parameter name="totalPrice" value="100"/>
+                <parameter name="checkInDate" value="2018-01-01"/>
+                <parameter name="checkOutDate" value="2018-01-01"/>
+                <parameter name="additionalNeeds" value="dinner"/>
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Post request - check-in date Higher than the check-out date ">
+        <parameter name="statusCode" value="400"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <parameter name="statusCode" value="400"/>
+                <parameter name="firstName" value="Suman"/>
+                <parameter name="lastName" value="Sumanbs"/>
+                <parameter name="depositPaid" value="true"/>
+                <parameter name="totalPrice" value="100"/>
+                <parameter name="checkInDate" value="2018-02-01"/>
+                <parameter name="checkOutDate" value="2018-01-01"/>
+                <parameter name="additionalNeeds" value="dinner"/>
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Post request - Special characters in the first name">
+        <parameter name="statusCode" value="400"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <parameter name="statusCode" value="400"/>
+                <parameter name="firstName" value="Suman123$$"/>
+                <parameter name="lastName" value="Sumanbs"/>
+                <parameter name="depositPaid" value="true"/>
+                <parameter name="totalPrice" value="100"/>
+                <parameter name="checkInDate" value="2018-02-01"/>
+                <parameter name="checkOutDate" value="2018-01-01"/>
+                <parameter name="additionalNeeds" value="123"/>
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Post request - Special characters in the last name">
+        <parameter name="statusCode" value="400"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <parameter name="statusCode" value="400"/>
+                <parameter name="firstName" value="Suman"/>
+                <parameter name="lastName" value="Suman123$$"/>
+                <parameter name="depositPaid" value="true"/>
+                <parameter name="totalPrice" value="100"/>
+                <parameter name="checkInDate" value="2018-02-01"/>
+                <parameter name="checkOutDate" value="2018-01-01"/>
+                <parameter name="additionalNeeds" value="123"/>
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Post request - Deposit amount paid as false">
+        <parameter name="statusCode" value="400"/>
+        <classes>
+            <class name="com.fisdom.bookHotel.Tests.BookHotelTest">
+                <parameter name="statusCode" value="200"/>
+                <parameter name="firstName" value="Suman"/>
+                <parameter name="lastName" value="Suman123$$"/>
+                <parameter name="depositPaid" value="false"/>
+                <parameter name="totalPrice" value="100"/>
+                <parameter name="checkInDate" value="2018-02-01"/>
+                <parameter name="checkOutDate" value="2018-01-01"/>
+                <parameter name="additionalNeeds" value="123"/>
+                <methods>
+                    <include name="bookHotel"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
